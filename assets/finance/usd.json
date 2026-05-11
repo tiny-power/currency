@@ -1,0 +1,42 @@
+[
+    {
+        "name": "AUD",
+        "desc": "Australian Dollar"
+    },
+    {
+        "name": "CNY",
+        "desc": "Chinese Yuan"
+    },
+    {
+        "name": "HKD",
+        "desc": "Hong Kong Dollar"
+    },
+    {
+        "name": "SGD",
+        "desc": "Singapore Dollar"
+    },
+    {
+        "name": "IDR",
+        "desc": "Indonesian Rupiah"
+    },
+    {
+        "name": "MYR",
+        "desc": "Malaysian Ringgit"
+    },
+    {
+        "name": "PHP",
+        "desc": "Philippine Peso"
+    },
+    {
+        "name": "TWD",
+        "desc": "Taiwan Dollar"
+    },
+    {
+        "name": "RUB",
+        "desc": "Russian Ruble"
+    },
+    {
+        "name": "USD",
+        "desc": "US Dollar"
+    }
+]
