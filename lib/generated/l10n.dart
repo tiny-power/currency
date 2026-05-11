@@ -54,9 +54,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `LastTime`
+  /// `FXConvert`
   String get app_name {
-    return Intl.message('LastTime', name: 'app_name', desc: '', args: []);
+    return Intl.message('FXConvert', name: 'app_name', desc: '', args: []);
   }
 
   /// `Track when you last did anything`
