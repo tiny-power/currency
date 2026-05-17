@@ -1,13 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:currency/providers/currency_model.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:currency/generated/l10n.dart';
-import 'package:currency/providers/emoji_model.dart';
-import 'package:currency/providers/recorder_model.dart';
 import 'package:currency/routes/app_routes.dart';
 
 class NewEventPage extends StatefulWidget {
@@ -17,14 +14,10 @@ class NewEventPage extends StatefulWidget {
 }
 
 class _NewEventPageState extends State<NewEventPage> with RouteAware {
-  final TextEditingController _nameController = TextEditingController();
-  int index = 0;
-  String selected = S.current.custom_event;
-
   @override
   void initState() {
-    final emojiModel = Provider.of<EmojiModel>(context, listen: false);
-    emojiModel.queryData();
+    final currencyModel = Provider.of<CurrencyModel>(context, listen: false);
+    currencyModel.queryData();
     super.initState();
   }
 
@@ -43,177 +36,83 @@ class _NewEventPageState extends State<NewEventPage> with RouteAware {
     routeObserver.subscribe(this, ModalRoute.of(context)!);
   }
 
-  dynamic _onSelected(int i, String name) {
-    setState(() {
-      index = i;
-      selected = name;
-    });
-    if (i == 0) {
-      _nameController.text = '';
-    } else {
-      _nameController.text = name;
-    }
-  }
-
-  Future<void> _onPressed() async {
-    FocusScope.of(context).requestFocus(FocusNode());
-    if (_nameController.text == '') {
-      EasyLoading.showToast('Event name is Required');
-      return;
-    }
-    final recorderModel = Provider.of<RecorderModel>(context, listen: false);
-    final emojiModel = Provider.of<EmojiModel>(context, listen: false);
-    recorderModel.insert(
-      _nameController.text,
-      emojiModel.list[index]['icon'].toString(),
-    );
+  void onDetailTap() {
     context.go('/');
-  }
-
-  void _onEditEmoji(int id) {
-    context.push('/emoji', extra: {'id': id});
-  }
-
-  void _onDeleteEmoji(int id) {
-    final emojiModel = Provider.of<EmojiModel>(context, listen: false);
-    emojiModel.deleteById(id);
-  }
-
-  void _onAddEmoji() {
-    context.push('/newEmoji');
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
-        title: Text(S.current.new_event, style: TextStyle(fontSize: 18)),
+        title: Text(S.current.add_currency, style: TextStyle(fontSize: 18)),
         centerTitle: true,
         elevation: 0,
-        actions: [
-          IconButton(onPressed: _onAddEmoji, icon: Icon(Icons.add)),
-          IconButton(onPressed: _onPressed, icon: Icon(Icons.done)),
-        ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              padding: .all(12),
-              child: TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  hintText: 'Event name',
-                  filled: true,
-                  fillColor: Theme.of(context).colorScheme.onPrimary,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: .circular(8),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: .circular(8),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Consumer<EmojiModel>(
-              builder: (context, emojiModel, child) {
-                return Expanded(
-                  child: Container(
-                    padding: .only(right: 12, left: 12),
-                    child: GridView(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        mainAxisExtent: 110,
-                        mainAxisSpacing: 12,
-                        crossAxisSpacing: 12,
-                      ),
-                      children: List.generate(
-                        emojiModel.list.length,
-                        (i) => CupertinoContextMenu(
-                          actions: [
-                            CupertinoContextMenuAction(
-                              trailingIcon: CupertinoIcons.doc_text_search,
-                              child: Text(S.current.edit),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                _onEditEmoji(emojiModel.list[i]["id"]);
-                              },
-                            ),
-                            if (emojiModel.list[i]["name"] != S.current.custom_event)
-                              CupertinoContextMenuAction(
-                                trailingIcon: CupertinoIcons.delete,
-                                isDestructiveAction: true,
-                                child: Text(S.current.delete),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  _onDeleteEmoji(emojiModel.list[i]["id"]);
-                                },
-                              ),
-                          ],
-                          child: GestureDetector(
-                            onTap: () => _onSelected(
-                              i,
-                              emojiModel.list[i]["name"].toString(),
-                            ),
-                            child: Container(
-                              width: (screenWidth - 36) / 3,
-                              height: 110,
-                              decoration: BoxDecoration(
-                                borderRadius: .circular(12),
-                                color:
-                                    emojiModel.list[i]["name"].toString() ==
-                                        selected
-                                    ? Theme.of(
-                                        context,
-                                      ).colorScheme.errorContainer
-                                    : Theme.of(context).colorScheme.onPrimary,
-                                border: Border.all(
-                                  color:
-                                      emojiModel.list[i]["name"].toString() ==
-                                          selected
-                                      ? Theme.of(context).colorScheme.error
-                                      : Theme.of(context).colorScheme.onPrimary,
+        child: Consumer<CurrencyModel>(
+          builder: (context, currencyModel, child) {
+            return Container(
+              margin: .only(top: 12, bottom: 12),
+              child: ListView.separated(
+                itemCount: currencyModel.list.length,
+                cacheExtent: 56,
+                separatorBuilder: (context, index) {
+                  return Divider(thickness: 0.25);
+                },
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    behavior: .opaque,
+                    onTap: () => onDetailTap(),
+                    child: Container(
+                      padding: .only(left: 12, right: 12, top: 2, bottom: 2),
+                      child: Row(
+                        spacing: 12,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.outlineVariant,
+                                  blurRadius: 8,
+                                  offset: Offset(0, 4),
                                 ),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: .center,
-                                crossAxisAlignment: .center,
-                                children: [
-                                  // Image.asset(
-                                  //   'assets/emoji/${iconData[i]["icon"]}.png',
-                                  //   width: 36,
-                                  //   height: 36,
-                                  // ),
-                                  Text(
-                                    emojiModel.list[i]["icon"].toString(),
-                                    style: TextStyle(fontSize: 36),
-                                  ),
-                                  SizedBox(height: 8),
-                                  Text(
-                                    emojiModel.list[i]["name"].toString(),
-                                    textAlign: .center,
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                ],
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: .circular(6),
+                              child: Image.asset(
+                                'assets/finance/${currencyModel.list[index]['name']}.webp',
+                                width: 60,
+                                height: 40,
+                                cacheWidth: 60,
+                                cacheHeight: 40,
+                                fit: .fill,
                               ),
                             ),
                           ),
-                        ),
+                          Column(
+                            crossAxisAlignment: .start,
+                            children: [
+                              Text(
+                                currencyModel.list[index]['name'],
+                                style: TextStyle(fontWeight: .bold),
+                              ),
+                              Text(
+                                currencyModel.list[index]['desc'],
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
     );

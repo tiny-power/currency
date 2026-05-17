@@ -1,0 +1,69 @@
+PODS:
+  - flutter_localization (0.0.1):
+    - FlutterMacOS
+  - flutter_udid (0.0.1):
+    - FlutterMacOS
+    - KeychainAccess
+  - FlutterMacOS (1.0.0)
+  - KeychainAccess (4.2.2)
+  - purchases_flutter (9.16.1):
+    - FlutterMacOS
+    - PurchasesHybridCommon (= 17.55.1)
+  - PurchasesHybridCommon (17.55.1):
+    - RevenueCat (= 5.67.1)
+  - RevenueCat (5.67.1)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sqflite_darwin (0.0.4):
+    - Flutter
+    - FlutterMacOS
+  - url_launcher_macos (0.0.1):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - flutter_localization (from `Flutter/ephemeral/.symlinks/plugins/flutter_localization/macos`)
+  - flutter_udid (from `Flutter/ephemeral/.symlinks/plugins/flutter_udid/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - purchases_flutter (from `Flutter/ephemeral/.symlinks/plugins/purchases_flutter/macos`)
+  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - sqflite_darwin (from `Flutter/ephemeral/.symlinks/plugins/sqflite_darwin/darwin`)
+  - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
+
+SPEC REPOS:
+  trunk:
+    - KeychainAccess
+    - PurchasesHybridCommon
+    - RevenueCat
+
+EXTERNAL SOURCES:
+  flutter_localization:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_localization/macos
+  flutter_udid:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_udid/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  purchases_flutter:
+    :path: Flutter/ephemeral/.symlinks/plugins/purchases_flutter/macos
+  shared_preferences_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin
+  sqflite_darwin:
+    :path: Flutter/ephemeral/.symlinks/plugins/sqflite_darwin/darwin
+  url_launcher_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
+
+SPEC CHECKSUMS:
+  flutter_localization: 3cda759884c7dab4466fe963d97fba723a492666
+  flutter_udid: 00c09e022fd527fd39fef97670b220f2ae8190e7
+  FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  purchases_flutter: cfe4e98a24972974fd1567b3153a696e8110fda0
+  PurchasesHybridCommon: ecd9d7c586287625f1225b8de5e24c1021502270
+  RevenueCat: 9357239a9f0978285e68983637b8a602e65c94f0
+  shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
+  sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
+  url_launcher_macos: f87a979182d112f911de6820aefddaf56ee9fbfd
+
+PODFILE CHECKSUM: 54d867c82ac51cbd61b565781b9fada492027009
+
+COCOAPODS: 1.16.2

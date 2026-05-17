@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:currency/providers/banner_model.dart';
-import 'package:currency/providers/emoji_model.dart';
+import 'package:currency/providers/currency_model.dart';
 import 'package:currency/providers/native_model.dart';
 import 'package:currency/providers/purchage_model.dart';
 import 'package:currency/providers/reward_model.dart';
@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => BannerModel()),
-        ChangeNotifierProvider(create: (_) => EmojiModel()),
+        ChangeNotifierProvider(create: (_) => CurrencyModel()),
         ChangeNotifierProvider(create: (_) => NativeModel()),
         ChangeNotifierProvider(create: (_) => PurchageModel()),
         ChangeNotifierProvider(create: (_) => RecorderModel()),

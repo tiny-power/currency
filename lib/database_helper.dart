@@ -1,4 +1,6 @@
-import 'package:currency/generated/l10n.dart';
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -19,37 +21,27 @@ class DatabaseHelper {
   }
 
   Future<Database> initDb() async {
-    var db = await openDatabase('time.db');
+    var db = await openDatabase('currency.db');
+    final commandContent = await rootBundle.loadString(
+      'assets/currency.json',
+    );
+    final List<dynamic> jsonList = jsonDecode(commandContent);
+    try {
+      await db.execute(
+        'CREATE TABLE Currency (id INTEGER PRIMARY KEY, name TEXT, desc TEXT)',
+      );
+      var batch = db.batch();
+      for (var item in jsonList) {
+        batch.insert('Currency', item);
+      }
+      await batch.commit(noResult: true);
+    } catch (e) {
+      e.toString();
+    }
     try {
       await db.execute(
         'CREATE TABLE Record (id INTEGER PRIMARY KEY, name TEXT, icon TEXT, record_time TIMESTAMP, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)',
       );
-    } catch (e) {
-      e.toString();
-    }
-    try {
-      await db.execute(
-        'CREATE TABLE Record_Detail (id INTEGER PRIMARY KEY, record_id INTEGER, record_time TIMESTAMP, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)',
-      );
-    } catch (e) {
-      e.toString();
-    }
-    try {
-      await db.execute(
-        'CREATE TABLE Emoji (id INTEGER PRIMARY KEY, name TEXT, icon TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)',
-      );
-      final List<Map<String, Object>> emojiList = [
-        {"name": S.current.custom_event, "icon": '✏️'},
-        {"name": S.current.haircut, "icon": '✂️'},
-        {"name": S.current.replace_razor, "icon": '🪒'}
-      ];
-      for (var emoji in emojiList) {
-        String name = emoji['name'].toString();
-        String icon = emoji['icon'].toString();
-        await db.rawInsert(
-          'INSERT INTO Emoji(name, icon) VALUES("$name", "$icon")',
-        );
-      }
     } catch (e) {
       e.toString();
     }

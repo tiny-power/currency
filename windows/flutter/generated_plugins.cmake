@@ -3,7 +3,6 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  emoji_picker_flutter
   flutter_localization
   flutter_udid
   url_launcher_windows

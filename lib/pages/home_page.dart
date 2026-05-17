@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> with RouteAware {
                                 textAlign: .center,
                                 style: TextStyle(
                                   fontSize: 16,
-                                  fontWeight: .bold,
+                                  fontWeight: .w500,
                                 ),
                               ),
                             ),
@@ -253,8 +253,9 @@ class _HomePageState extends State<HomePage> with RouteAware {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         title: Text(S.current.app_name, style: TextStyle(fontSize: 18)),
         centerTitle: true,
         elevation: 0,
@@ -264,16 +265,383 @@ class _HomePageState extends State<HomePage> with RouteAware {
         ),
         actions: [IconButton(onPressed: _onPressed, icon: Icon(Icons.add))],
       ),
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Consumer<RecorderModel>(
-              builder: (context, recorderModel, child) {
-                return buildRecord(recorderModel);
-              },
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Consumer<RecorderModel>(
+                builder: (context, recorderModel, child) {
+                  return Text('data');
+                },
+              ),
             ),
-          ),
-        ],
+            Container(
+              padding: .only(top: 12, left: 16, right: 16),
+              child: Column(
+                spacing: 8,
+                children: [
+                  Row(
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.outlineVariant,
+                              shape: .circle,
+                            ),
+                            child: Icon(
+                              Icons.backspace_outlined,
+                              size: 32,
+                              fontWeight: .w400,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.outlineVariant,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              'C',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.outlineVariant,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '%',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFF9500),
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '÷',
+                              style: TextStyle(
+                                fontWeight: .w500,
+                                fontSize: 48,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '7',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '8',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '9',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFF9500),
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '×',
+                              style: TextStyle(
+                                fontWeight: .w500,
+                                fontSize: 48,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '4',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '5',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '6',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFF9500),
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '-',
+                              style: TextStyle(
+                                fontWeight: .w500,
+                                fontSize: 48,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '1',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '2',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '3',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFF9500),
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '+',
+                              style: TextStyle(
+                                fontWeight: .w500,
+                                fontSize: 48,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    spacing: 12,
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: AspectRatio(
+                          aspectRatio: 2,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              borderRadius: .circular(60),
+                            ),
+                            child: Text(
+                              '0',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '.',
+                              style: TextStyle(fontWeight: .w500, fontSize: 32),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: Container(
+                            alignment: .center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFF9500),
+                              shape: .circle,
+                            ),
+                            child: Text(
+                              '=',
+                              style: TextStyle(
+                                fontWeight: .w500,
+                                fontSize: 48,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -54,7 +54,6 @@ dependencies:
   timeago: ^3.7.1
   purchases_flutter: ^9.15.1
   purchases_ui_flutter: ^9.15.1
-  emoji_picker_flutter: ^4.4.0
 
 dev_dependencies:
   flutter_test:
